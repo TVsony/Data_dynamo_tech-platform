@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+    
+        h1 {
+            color: #2c3e50;
+        }
+    
+        .logout {
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+    
+        .course {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 1px 1px 5px rgba(0,0,0,0.1);
+        }
+    
+        .course-title {
+            font-size: 20px;
+            font-weight: bold;
+            color: #34495e;
+        }
+    
+        .video-link {
+            display: inline-block;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            color: #3498db;
+            text-decoration: none;
+        }
+    
+        .video-link:hover {
+            text-decoration: underline;
+        }
+    
+        .price {
+            font-weight: bold;
+        }
+    </style>
+    
+</head>
+<body>
+    <h1>Welcome to your Dashboard!</h1>
+    <p><a href="/logout">Logout</a></p>
+    
+    <h3>Your Courses</h3>
+    {% if courses %}
+        <ul>
+            {% for course in courses %}
+                <li>
+                    <h4>{{ course.name }}</h4>
+                    <p>{{ course.description }}</p>
+                    <a href="{{ course.video_url }}" target="_blank">Watch Video</a>
+                    <p>Price: ₹{{ course.price }}</p>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No courses available.</p>
+    {% endif %}
+</body>
+</html>

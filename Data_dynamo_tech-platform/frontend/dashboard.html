@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Data Dynamo Tech Platform</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="dashboard-header">
+        <h1>Welcome, {{ session['user_id'] }}</h1>
+        <a href="{{ url_for('logout') }}" class="button">Logout</a>
+    </div>
+
+    <div class="courses">
+        <h2>Available Courses</h2>
+        <ul>
+            {% for course in courses %}
+            <li>
+                <h3>{{ course.name }}</h3>
+                <p>{{ course.description }}</p>
+                <a href="{{ course.video_url }}" class="button">Watch Video</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+</html>
